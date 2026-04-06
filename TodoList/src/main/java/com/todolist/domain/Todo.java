@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Todo {
     private final Map<Integer, String> TODO_STATUS = Map.of(1, "시작 전", 2, "진행중", 3, "완료");
+    private long sequence = 1;
 
     private final long id;
     private String status;
@@ -12,8 +13,8 @@ public class Todo {
     private String content;
     private LocalDateTime createdAt;
 
-    public Todo(long id, int priority, String content) {
-        this.id = id;
+    public Todo(int priority, String content) {
+        this.id = sequence++;
         this.status = TODO_STATUS.get(1);
         this.priority = priority;
         this.content = content;
