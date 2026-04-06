@@ -1,5 +1,6 @@
 package com.todolist;
 
+import com.todolist.domain.Todo;
 import com.todolist.view.MenuInputView;
 import com.todolist.view.MenuOutputView;
 import java.util.*;
@@ -28,7 +29,8 @@ public class TodoListApplication {
             case "2" -> {
                 isImplemented(selection);
                 output.printCreateMenu();
-                input.inputCreateTodo();
+                Todo todo = input.inputCreateTodo();
+                output.printCreateSuccess(todo);
             }
             case "3" -> isImplemented(selection);
             case "4" -> isImplemented(selection);

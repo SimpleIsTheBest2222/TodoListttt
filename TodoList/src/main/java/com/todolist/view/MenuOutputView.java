@@ -1,5 +1,7 @@
 package com.todolist.view;
 
+import com.todolist.domain.Todo;
+
 public class MenuOutputView {
     static  MenuInputView input = new MenuInputView();
 
@@ -20,11 +22,11 @@ public class MenuOutputView {
                 """);
     }
 
-    public void printCreateSuccess() {
-/*        System.out.println("---------------------------------------------------------");
-        System.out.println("[시스템] \"Spring Boot 학습하기\" 항목이 추가되었습니다!");
-        System.out.println(("생성 시간: "));
-        System.out.println("---------------------------------------------------------");*/
+    public void printCreateSuccess(Todo todo) {
+        System.out.println("---------------------------------------------------------");
+        System.out.println("[시스템] \"" + todo.getContent() + "\" 항목이 추가되었습니다!");
+        System.out.println("(생성 시간: " + todo.getCreatedAt() + ")");
+        System.out.println("---------------------------------------------------------");
     }
 
     public void printNotImplementedMessage() {
