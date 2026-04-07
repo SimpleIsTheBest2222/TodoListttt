@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Todo {
     private final Map<Integer, String> TODO_STATUS = Map.of(1, "시작 전", 2, "진행중", 3, "완료");
-    private long sequence = 1;
+    private static long sequence = 1;
 
     private final long id;
     private String status;
