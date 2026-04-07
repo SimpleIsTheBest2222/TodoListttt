@@ -7,6 +7,7 @@ import java.util.Map;
 public class Todo {
     private final Map<Integer, String> TODO_STATUS = Map.of(1, "시작 전", 2, "진행중", 3, "완료");
     private static long sequence = 1;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     private final long id;
     private String status;
@@ -39,7 +40,7 @@ public class Todo {
     }
 
     public String getCreatedAt() {
-        return createdAt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        return createdAt.format(FORMATTER);
     }
 
     public void setStatus(String status) {
