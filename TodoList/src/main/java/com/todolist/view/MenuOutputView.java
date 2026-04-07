@@ -23,10 +23,12 @@ public class MenuOutputView {
     }
 
     public void printCreateSuccess(Todo todo) {
-        System.out.println("---------------------------------------------------------");
-        System.out.println("[시스템] \"" + todo.getContent() + "\" 항목이 추가되었습니다!");
-        System.out.println("(생성 시간: " + todo.getCreatedAt() + ")");
-        System.out.println("---------------------------------------------------------");
+        System.out.println("""
+                ---------------------------------------------------------
+                [시스템] "%s" 항목이 추가되었습니다!
+                (생성 시간: %s)
+                ---------------------------------------------------------
+                """.formatted(todo.getContent(), todo.getCreatedAt()));
     }
 
     public void printNotImplementedMessage() {
