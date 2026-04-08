@@ -40,13 +40,21 @@ public class MenuOutputView {
                 ---------------------------------------------------------------------------------------------
                 """);
         for (Todo todo : todoList) {
-            System.out.println(" %02d | [%s] |   %d   | %s | %s"
+            System.out.printf(" %02d | [%s] |   %d   | %s | %s\n",
+                    todo.getId(),
+                    todo.getStatus(),
+                    todo.getPriority(),
+                    todo.getCreatedAt(),
+                    todo.getContent());
+
+
+          /*  System.out.println(" %02d | [%s] |   %d   | %s | %s"
                             .formatted(
                                     todo.getId(),
                                     todo.getStatus(),
                                     todo.getPriority(),
                                     todo.getCreatedAt(),
-                                    todo.getContent()));
+                                    todo.getContent()));*/
         }
         System.out.println("""
                 ---------------------------------------------------------------------------------------------
