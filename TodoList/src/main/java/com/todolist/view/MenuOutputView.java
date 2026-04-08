@@ -1,6 +1,10 @@
 package com.todolist.view;
 
+import com.todolist.domain.Todo;
+
 public class MenuOutputView {
+    static  MenuInputView input = new MenuInputView();
+
     public void printMainMenu() {
         System.out.print("[ To-Do List Manager ]\n" +
                         "1. 할 일 목록 보기\n" +
@@ -11,12 +15,27 @@ public class MenuOutputView {
                         "6. 종료\n");
     }
 
+    public void printCreateMenu() {
+        System.out.print("""
+                [ 새 할 일 추가 ]
+                ---------------------------------------------------------
+                """);
+    }
+
+    public void printCreateSuccess(Todo todo) {
+        System.out.println("""
+                ---------------------------------------------------------
+                [시스템] "%s" 항목이 추가되었습니다!
+                (생성 시간: %s)
+                ---------------------------------------------------------
+                """.formatted(todo.getContent(), todo.getCreatedAt()));
+    }
 
     public void printNotImplementedMessage() {
         System.out.println("[시스템] 아직 개발되지 않았습니다.\n");
     }
 
     public void printWrongInputMessage() {
-        System.out.println("[경고] 잘못된 입력입니다. 1~5 사이의 숫자를 입력해주세요.\n");
+        System.out.println("[경고] 잘못된 입력입니다. 1~6 사이의 숫자를 입력해주세요.\n");
     }
 }

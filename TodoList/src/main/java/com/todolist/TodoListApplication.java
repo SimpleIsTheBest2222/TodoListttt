@@ -1,14 +1,16 @@
 package com.todolist;
 
+import com.todolist.domain.Todo;
+import com.todolist.service.TodoService;
 import com.todolist.view.MenuInputView;
 import com.todolist.view.MenuOutputView;
 import java.util.*;
 
 public class TodoListApplication {
-
-    static Set<String> done_selection = new HashSet<>();
-    static  MenuInputView input = new MenuInputView();
+    static Set<String> done_selection = Set.of("2");
+    static MenuInputView input = new MenuInputView();
     static MenuOutputView output = new MenuOutputView();
+    static TodoService todoService = new TodoService();
 
     public static void main(String[] args) {
         while(true) {
@@ -26,7 +28,13 @@ public class TodoListApplication {
         /*todo crud 추가 예정 */
         switch (selection) {
             case "1" -> isImplemented(selection);
-            case "2" -> isImplemented(selection);
+            case "2" -> {
+                isImplemented(selection);
+                output.printCreateMenu();
+                String[] inputData = input.inputCreateTodo();
+                Todo todo = todoService.createTodo(inputData[0], Integer.parseInt(inputData[1]));
+                output.printCreateSuccess(todo);
+            }
             case "3" -> isImplemented(selection);
             case "4" -> isImplemented(selection);
             case "5" -> isImplemented(selection);
