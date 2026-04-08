@@ -7,7 +7,7 @@ import com.todolist.view.MenuOutputView;
 import java.util.*;
 
 public class TodoListApplication {
-    static Set<String> done_selection = Set.of("2");
+    static Set<String> done_selection = Set.of("1", "2");
     static MenuInputView input = new MenuInputView();
     static MenuOutputView output = new MenuOutputView();
     static TodoService todoService = new TodoService();
@@ -31,7 +31,7 @@ public class TodoListApplication {
                 isImplemented(selection);
                 List<Todo> todoList = todoService.readTodo();
                 if(todoList.isEmpty()) {
-                    //할일이 없음 메세지 출력
+                    output.printEmptyMessage();
                 } else {
                     output.printTodoList(todoList);
                 }
