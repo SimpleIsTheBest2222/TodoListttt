@@ -27,7 +27,15 @@ public class TodoListApplication {
 
         /*todo crud 추가 예정 */
         switch (selection) {
-            case "1" -> isImplemented(selection);
+            case "1" -> {
+                isImplemented(selection);
+                List<Todo> todoList = todoService.readTodo();
+                if(todoList.isEmpty()) {
+                    //할일이 없음 메세지 출력
+                } else {
+                    output.printTodoList(todoList);
+                }
+            }
             case "2" -> {
                 isImplemented(selection);
                 output.printCreateMenu();

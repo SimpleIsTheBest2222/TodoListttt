@@ -2,6 +2,8 @@ package com.todolist.view;
 
 import com.todolist.domain.Todo;
 
+import java.util.List;
+
 public class MenuOutputView {
     static  MenuInputView input = new MenuInputView();
 
@@ -29,6 +31,28 @@ public class MenuOutputView {
                 (생성 시간: %s)
                 ---------------------------------------------------------
                 """.formatted(todo.getContent(), todo.getCreatedAt()));
+    }
+
+    public void printTodoList(List<Todo> todoList) {
+        System.out.print("""
+                =============================================================================================
+                 ID |   상태   | 우선순위 |      생성 일시     |  할 일 내용
+                ---------------------------------------------------------------------------------------------
+                """);
+        for (Todo todo : todoList) {
+            System.out.println(" %02d | [%s] |   %d   | %s | %s"
+                            .formatted(
+                                    todo.getId(),
+                                    todo.getStatus(),
+                                    todo.getPriority(),
+                                    todo.getCreatedAt(),
+                                    todo.getContent()));
+        }
+        System.out.println("""
+                ---------------------------------------------------------------------------------------------
+                [ 총 "%d"개의 항목이 있습니다. ]
+                =============================================================================================
+                """.formatted(todoList.size()));
     }
 
     public void printNotImplementedMessage() {
