@@ -30,11 +30,10 @@ public class TodoListApplication {
 
     public static void validateSelection(String selection) {
 
-        /*todo crud 추가 예정 */
         switch (selection) {
             case "1" -> {
                 isImplemented(selection);
-                List<Todo> todoList = todoService.readTodo();
+                List<Todo> todoList = todoService.getAllTodos();
                 if(todoList.isEmpty()) {
                     output.printEmptyMessage();
                 } else {
