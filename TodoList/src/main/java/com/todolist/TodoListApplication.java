@@ -1,5 +1,6 @@
 package com.todolist;
 
+import com.todolist.common.CustomException;
 import com.todolist.domain.Todo;
 import com.todolist.service.TodoService;
 import com.todolist.view.MenuInputView;
@@ -7,7 +8,7 @@ import com.todolist.view.MenuOutputView;
 import java.util.*;
 
 public class TodoListApplication {
-    static Set<String> done_selection = Set.of("1", "2");
+    static Set<String> done_selection = Set.of("1", "2", "4");
     static MenuInputView input = new MenuInputView();
     static MenuOutputView output = new MenuOutputView();
     static TodoService todoService = new TodoService();
@@ -15,11 +16,15 @@ public class TodoListApplication {
     public static void main(String[] args) {
         while(true) {
             output.printMainMenu();
-            String selection = input.inputSelection();
-            if (selection.equals("6")) {
-                break;
+            try {
+                String selection = input.inputSelection();
+                if (selection.equals("6")) {
+                    break;
+                }
+                validateSelection(selection);
+            } catch (CustomException e) {
+                output.printErrorMessage(e.getMessage());
             }
-            validateSelection(selection);
         }
     }
 
@@ -44,7 +49,13 @@ public class TodoListApplication {
                 output.printCreateSuccess(todo);
             }
             case "3" -> isImplemented(selection);
-            case "4" -> isImplemented(selection);
+            case "4" -> {
+                isImplemented(selection);
+                output.printDeleteMenu();
+                long id = input.inputDeleteTodo();
+                todoService.deleteTodo(id);
+                output.printDeleteSuccess(id);
+            }
             case "5" -> isImplemented(selection);
             default -> output.printWrongInputMessage();
         }

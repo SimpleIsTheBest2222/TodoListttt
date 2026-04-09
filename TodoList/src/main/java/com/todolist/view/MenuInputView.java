@@ -22,4 +22,11 @@ public class MenuInputView {
         String priority = scanner.nextLine();
         return new String[]{content, priority};
     }
+
+    public long inputDeleteTodo() {
+        System.out.print("> 삭제할 항목의 ID를 입력하세요: ");
+        long id = scanner.nextInt();
+        scanner.nextLine();
+        return id;
+    }
 }

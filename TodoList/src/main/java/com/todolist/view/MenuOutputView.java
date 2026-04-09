@@ -46,21 +46,23 @@ public class MenuOutputView {
                     todo.getPriority(),
                     todo.getCreatedAt(),
                     todo.getContent());
-
-
-          /*  System.out.println(" %02d | [%s] |   %d   | %s | %s"
-                            .formatted(
-                                    todo.getId(),
-                                    todo.getStatus(),
-                                    todo.getPriority(),
-                                    todo.getCreatedAt(),
-                                    todo.getContent()));*/
         }
         System.out.println("""
                 ---------------------------------------------------------------------------------------------
                 [ 총 "%d"개의 항목이 있습니다. ]
                 =============================================================================================
                 """.formatted(todoList.size()));
+    }
+
+    public void printDeleteMenu() {
+        System.out.print("""
+                [ 할 일 삭제 ]
+                ---------------------------------------------------------
+                """);
+    }
+
+    public void printDeleteSuccess(long id) {
+        System.out.printf("[시스템] ID %02d번 항목의 정보가 성공적으로 삭제되었습니다.%n%n", id);
     }
 
     public void printNotImplementedMessage() {
@@ -72,6 +74,10 @@ public class MenuOutputView {
     }
 
     public void printEmptyMessage() {
-        System.out.println("현재 등록된 할 일이 없습니다.");
+        System.out.println("현재 등록된 할 일이 없습니다.\n");
+    }
+
+    public void printErrorMessage(String message) {
+        System.out.println(message);
     }
 }
