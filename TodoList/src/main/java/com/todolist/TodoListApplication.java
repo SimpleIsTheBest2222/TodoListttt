@@ -7,7 +7,7 @@ import com.todolist.view.MenuOutputView;
 import java.util.*;
 
 public class TodoListApplication {
-    static Set<String> done_selection = Set.of("1", "2");
+    static Set<String> done_selection = Set.of("1", "2", "4");
     static MenuInputView input = new MenuInputView();
     static MenuOutputView output = new MenuOutputView();
     static TodoService todoService = new TodoService();
@@ -44,7 +44,13 @@ public class TodoListApplication {
                 output.printCreateSuccess(todo);
             }
             case "3" -> isImplemented(selection);
-            case "4" -> isImplemented(selection);
+            case "4" -> {
+                isImplemented(selection);
+                output.printDeleteMenu();
+                long id = input.inputDeleteTodo();
+                todoService.deleteTodo(id);
+                output.printDeleteSuccess(id);
+            }
             case "5" -> isImplemented(selection);
             default -> output.printWrongInputMessage();
         }

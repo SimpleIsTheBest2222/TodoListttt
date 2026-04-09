@@ -63,15 +63,28 @@ public class MenuOutputView {
                 """.formatted(todoList.size()));
     }
 
+    public void printDeleteMenu() {
+        System.out.print("""
+                [ 할 일 삭제 ]
+                ---------------------------------------------------------
+                """);
+    }
+
+    public void printDeleteSuccess(long id) {
+        System.out.printf("[시스템] ID %02d번 항목의 정보가 성공적으로 삭제되었습니다.%n%n", id);
+    }
+
     public void printNotImplementedMessage() {
-        System.out.println("[시스템] 아직 개발되지 않았습니다.\n");
+        System.out.println("[시스템] 아직 개발되지 않았습니다.%n");
     }
 
     public void printWrongInputMessage() {
-        System.out.println("[경고] 잘못된 입력입니다. 1~6 사이의 숫자를 입력해주세요.\n");
+        System.out.println("[경고] 잘못된 입력입니다. 1~6 사이의 숫자를 입력해주세요.%n");
     }
 
     public void printEmptyMessage() {
-        System.out.println("현재 등록된 할 일이 없습니다.");
+        System.out.println("현재 등록된 할 일이 없습니다.%n");
     }
+
+
 }
