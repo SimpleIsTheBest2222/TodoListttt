@@ -46,15 +46,6 @@ public class MenuOutputView {
                     todo.getPriority(),
                     todo.getCreatedAt(),
                     todo.getContent());
-
-
-          /*  System.out.println(" %02d | [%s] |   %d   | %s | %s"
-                            .formatted(
-                                    todo.getId(),
-                                    todo.getStatus(),
-                                    todo.getPriority(),
-                                    todo.getCreatedAt(),
-                                    todo.getContent()));*/
         }
         System.out.println("""
                 ---------------------------------------------------------------------------------------------
