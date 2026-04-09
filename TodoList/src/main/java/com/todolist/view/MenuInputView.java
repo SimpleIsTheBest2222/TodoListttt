@@ -1,9 +1,7 @@
 package com.todolist.view;
 
-import com.todolist.domain.Todo;
 import com.todolist.service.TodoService;
 
-import java.io.Console;
 import java.util.*;
 
 public class MenuInputView {
