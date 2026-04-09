@@ -7,7 +7,7 @@ import com.todolist.view.MenuOutputView;
 import java.util.*;
 
 public class TodoListApplication {
-    static Set<String> done_selection = Set.of("2");
+    static Set<String> done_selection = Set.of("1", "2");
     static MenuInputView input = new MenuInputView();
     static MenuOutputView output = new MenuOutputView();
     static TodoService todoService = new TodoService();
@@ -27,7 +27,15 @@ public class TodoListApplication {
 
         /*todo crud 추가 예정 */
         switch (selection) {
-            case "1" -> isImplemented(selection);
+            case "1" -> {
+                isImplemented(selection);
+                List<Todo> todoList = todoService.readTodo();
+                if(todoList.isEmpty()) {
+                    output.printEmptyMessage();
+                } else {
+                    output.printTodoList(todoList);
+                }
+            }
             case "2" -> {
                 isImplemented(selection);
                 output.printCreateMenu();

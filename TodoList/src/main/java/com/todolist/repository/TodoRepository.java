@@ -11,8 +11,8 @@ public class TodoRepository {
         todoList.add(todo);
     }
 
-    public void findAll() {
-
+    public List<Todo> findAll() {
+        return todoList;
     }
 
     public void findById() {
