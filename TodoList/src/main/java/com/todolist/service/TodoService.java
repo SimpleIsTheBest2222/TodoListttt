@@ -16,12 +16,24 @@ public class TodoService {
         return todo;
     }
 
-    public List<Todo> readTodo() {
+    public List<Todo> getAllTodos() {
         return todoRepository.findAll();
     }
 
-    public void updateTodo() {
+    public Todo getTodo(long id) {
+       Todo todo = todoRepository.findById(id);
+        if (todo == null) {
+            throw new CustomException(ErrorCode.TODO_NO_FOUND);
+        }
+        return todo;
+    }
 
+    public void updateTodo(long id, String content, int status, int priority) {
+        Todo todo = todoRepository.findById(id);
+        if (todo == null) {
+            throw new CustomException(ErrorCode.TODO_NO_FOUND);
+        }
+        todo.update(status, priority, content);
     }
 
     public void deleteTodo(long id) {

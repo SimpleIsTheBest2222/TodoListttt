@@ -8,7 +8,7 @@ import com.todolist.view.MenuOutputView;
 import java.util.*;
 
 public class TodoListApplication {
-    static Set<String> done_selection = Set.of("1", "2", "4");
+    static Set<String> done_selection = Set.of("1", "2", "3", "4");
     static MenuInputView input = new MenuInputView();
     static MenuOutputView output = new MenuOutputView();
     static TodoService todoService = new TodoService();
@@ -30,11 +30,10 @@ public class TodoListApplication {
 
     public static void validateSelection(String selection) {
 
-        /*todo crud 추가 예정 */
         switch (selection) {
             case "1" -> {
                 isImplemented(selection);
-                List<Todo> todoList = todoService.readTodo();
+                List<Todo> todoList = todoService.getAllTodos();
                 if(todoList.isEmpty()) {
                     output.printEmptyMessage();
                 } else {
@@ -48,7 +47,17 @@ public class TodoListApplication {
                 Todo todo = todoService.createTodo(inputData[0], Integer.parseInt(inputData[1]));
                 output.printCreateSuccess(todo);
             }
-            case "3" -> isImplemented(selection);
+            case "3" -> {
+                isImplemented(selection);
+                output.printUpdateMenu();
+                long id = input.inputUpdateTodo();
+                Todo curTodo = todoService.getTodo(id);
+                output.printTodo(curTodo);
+
+                String[] updateData = input.inputUpdateData();
+                todoService.updateTodo(id, updateData[0], Integer.parseInt(updateData[1]), Integer.parseInt(updateData[2]));
+                output.printUpdateSuccess(id);
+            }
             case "4" -> {
                 isImplemented(selection);
                 output.printDeleteMenu();

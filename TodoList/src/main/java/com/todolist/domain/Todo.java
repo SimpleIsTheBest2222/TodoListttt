@@ -23,6 +23,13 @@ public class Todo {
         this.createdAt = LocalDateTime.now();
     }
 
+    public void update(int status, int priority, String content) {
+        this.status = TODO_STATUS.get(status);
+        this.priority = priority;
+        this.content = content;
+        //우선순위, 내용 예외처리
+    }
+
     public long getId() {
         return id;
     }
