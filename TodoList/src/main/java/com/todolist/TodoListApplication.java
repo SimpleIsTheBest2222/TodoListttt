@@ -1,5 +1,6 @@
 package com.todolist;
 
+import com.todolist.common.CustomException;
 import com.todolist.domain.Todo;
 import com.todolist.service.TodoService;
 import com.todolist.view.MenuInputView;
@@ -15,11 +16,15 @@ public class TodoListApplication {
     public static void main(String[] args) {
         while(true) {
             output.printMainMenu();
-            String selection = input.inputSelection();
-            if (selection.equals("6")) {
-                break;
+            try {
+                String selection = input.inputSelection();
+                if (selection.equals("6")) {
+                    break;
+                }
+                validateSelection(selection);
+            } catch (CustomException e) {
+                output.printErrorMessage(e.getMessage());
             }
-            validateSelection(selection);
         }
     }
 
