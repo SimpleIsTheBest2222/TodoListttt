@@ -65,6 +65,22 @@ public class MenuOutputView {
         System.out.printf("[시스템] ID %02d번 항목의 정보가 성공적으로 삭제되었습니다.%n%n", id);
     }
 
+    public void printUpdateMenu() {
+        System.out.print("""
+                [ 할 일 수정 ]
+                ---------------------------------------------------------
+                """);
+    }
+
+    public void printTodo(Todo todo) {
+        System.out.printf("""
+                [현재 데이터]
+                - 내용: %s
+                - 상태: %s
+                - 우선순위: %d
+                """, todo.getContent(), todo.getStatus(), todo.getPriority());
+    }
+
     public void printNotImplementedMessage() {
         System.out.println("[시스템] 아직 개발되지 않았습니다.\n");
     }

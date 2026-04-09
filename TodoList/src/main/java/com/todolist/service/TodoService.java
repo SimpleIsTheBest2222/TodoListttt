@@ -20,6 +20,14 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
+    public Todo getTodo(long id) {
+       Todo todo = todoRepository.findById(id);
+        if (todo == null) {
+            throw new CustomException(ErrorCode.TODO_NO_FOUND);
+        }
+        return todo;
+    }
+
     public void updateTodo() {
 
     }

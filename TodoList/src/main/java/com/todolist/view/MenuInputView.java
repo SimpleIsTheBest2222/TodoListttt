@@ -3,6 +3,7 @@ package com.todolist.view;
 import com.todolist.domain.Todo;
 import com.todolist.service.TodoService;
 
+import java.io.Console;
 import java.util.*;
 
 public class MenuInputView {
@@ -25,6 +26,13 @@ public class MenuInputView {
 
     public long inputDeleteTodo() {
         System.out.print("> 삭제할 항목의 ID를 입력하세요: ");
+        long id = scanner.nextInt();
+        scanner.nextLine();
+        return id;
+    }
+
+    public long inputUpdateTodo() {
+        System.out.print("> 수정할 항목의 ID를 입력하세요: ");
         long id = scanner.nextInt();
         scanner.nextLine();
         return id;
