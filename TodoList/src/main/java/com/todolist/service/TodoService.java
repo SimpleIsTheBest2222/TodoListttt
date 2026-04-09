@@ -22,7 +22,10 @@ public class TodoService {
 
     }
 
-    public void deleteTodo() {
-
+    public void deleteTodo(long id) {
+//        Todo todo = todoRepository.findById(id);
+//        if(todo == null) {
+//        }
+        todoRepository.delete(id);
     }
 }
