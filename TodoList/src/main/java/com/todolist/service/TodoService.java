@@ -1,5 +1,7 @@
 package com.todolist.service;
 
+import com.todolist.common.CustomException;
+import com.todolist.common.ErrorCode;
 import com.todolist.domain.Todo;
 import com.todolist.repository.TodoRepository;
 
@@ -23,9 +25,10 @@ public class TodoService {
     }
 
     public void deleteTodo(long id) {
-//        Todo todo = todoRepository.findById(id);
-//        if(todo == null) {
-//        }
+        Todo todo = todoRepository.findById(id);
+        if (todo == null) {
+            throw new CustomException(ErrorCode.TODO_NO_FOUND);
+        }
         todoRepository.delete(id);
     }
 }
