@@ -15,7 +15,14 @@ public class TodoRepository {
         return todoList;
     }
 
-    public void findById() {
+    public void delete(long id) {
+        todoList.removeIf(todo -> todo.getId() == id);
+    }
 
+    public Todo findById(long id) {
+        return todoList.stream()
+                .filter(todo -> todo.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 }
