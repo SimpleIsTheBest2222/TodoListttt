@@ -28,8 +28,12 @@ public class TodoService {
         return todo;
     }
 
-    public void updateTodo() {
-
+    public void updateTodo(long id, String content, int status, int priority) {
+        Todo todo = todoRepository.findById(id);
+        if (todo == null) {
+            throw new CustomException(ErrorCode.TODO_NO_FOUND);
+        }
+        todo.update(status, priority, content);
     }
 
     public void deleteTodo(long id) {
