@@ -77,10 +77,14 @@ public class MenuOutputView {
                 [현재 데이터]
                 - 내용: %s
                 - 상태: %s
-                - 우선순위: %d
+                - 우선순위: %d%n
                 """, todo.getContent(), todo.getStatus(), todo.getPriority());
     }
 
+    public void printUpdateSuccess(long id) {
+        System.out.printf("[시스템] ID %02d번 항목의 정보가 성공적으로 업데이트되었습니다.%n%n", id);
+
+    }
     public void printNotImplementedMessage() {
         System.out.println("[시스템] 아직 개발되지 않았습니다.\n");
     }
@@ -96,4 +100,6 @@ public class MenuOutputView {
     public void printErrorMessage(String message) {
         System.out.println(message);
     }
+
+
 }

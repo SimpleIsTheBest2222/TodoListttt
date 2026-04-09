@@ -53,6 +53,10 @@ public class TodoListApplication {
                 long id = input.inputUpdateTodo();
                 Todo curTodo = todoService.getTodo(id);
                 output.printTodo(curTodo);
+
+                String[] updateData = input.inputUpdateData();
+                todoService.updateTodo(id, updateData[0], Integer.parseInt(updateData[1]), Integer.parseInt(updateData[2]));
+                output.printUpdateSuccess(id);
             }
             case "4" -> {
                 isImplemented(selection);
