@@ -27,7 +27,6 @@ public class Todo {
         this.status = TODO_STATUS.get(status);
         this.priority = priority;
         this.content = content;
-        this.createdAt = LocalDateTime.now();
         //우선순위, 내용 예외처리
     }
 
